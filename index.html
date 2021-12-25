@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: khaki;
+        }
+       
+        .Header{
+            margin:auto;
+            background-color:chartreuse;
+            
+            justify-content: center;
+            text-align:center;
+            border: 3px solid black;
+            align-items: center;
+            height: 75px;
+            width: 50%;
+            padding: 5px;
+        }
+        .card{
+            background-color:khaki;
+            text-decoration: darkslategray;
+            text-align:justify;
+            padding: 10px;
+            border-radius: 50px;
+            
+        }
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="Header" id="flex"><h1>Difference between HTTP1.1 vs HTTP2</h1></div>
+    <div class="right-column">
+        <div class="card">
+            <h3>Key Features of HTTP/1.1:</h3>
+            <p><ul>
+                <li>It was no longer required for each connection to be terminated immediately after every request was served with a response; instead, with the keep-alive header, it was possible to have persistent connections. It allowed multiple requests/responses per TCP connection.</li>
+                <li>The Upgrade header was used to indicate a preference from the client that made it possible to switch to a more preferred protocol if found appropriate by the server.</li>
+                <li>HTTP/1.1 provided support for chunk transfers that allowed streaming of content dynamically as chunks and for additional headers to be sent after the message body. This enhancement was particularly useful in cases where values of a field remained unknown until the content had been produced. For example, when the content had to be digitally signed, it was not possible to do so before the entire content gets generated.</li>
+                <li>Other features that reinforced its stability were introduced such as:<ul><li>pipelining (the second request is sent before the response to the first is adequately served)</li>
+                    <li>content negotiation (an exchange between client and server to determine the media type, it also provides the provision to serve different versions of a resource at the same URI)</li>
+                <li>cache control (used to specify caching policies in both requests and responses)</li></ul>
+                    </ul></li>
+                </p>
+            </div>
+            <div class="card">
+                <h3>Key Features of HTTP/2:</h3>
+                <p style="font-size: 100 px;"><ul>
+                    <li>It introduces the concept of a server push where the server anticipates the resources that will be required by the client and pushes them prior to the client making requests. The client retains the authority to deny the server push; however, in most cases, this feature adds a lot of efficiency to the process.</li>
+                    <img src="https://cheapsslsecurity.com/p/wp-content/uploads/2019/07/server-push-in-http-2.png" alt="">
+                    <li>Introduces the concept of multiplexing that interleaves the requests and responses without head-of-line blocking and does so over a single TCP connection.</li>
+                    <img src="https://cheapsslsecurity.com/p/wp-content/uploads/2019/07/multiplexing-http-2.png" alt="">
+                    <li>It is a binary protocol i.e. only binary commands in the form of 0s and 1s are transmitted over the wire. The binary framing layer divides the message into frames that are segregated based on their type – Data or Header. This feature greatly increases efficiency in terms of security, compression and multiplexing.</li>
+                    <img src="https://cheapsslsecurity.com/p/wp-content/uploads/2019/07/binary-framing-layer-500x258.png" alt="">
+                    <img src="https://cheapsslsecurity.com/p/wp-content/uploads/2019/07/http-2-binary-traffic-768x384.png" alt="">
+                    <li>HTTP/2 uses HPACK header compression algorithm that is resilient to attacks like CRIME and utilizes static Huffman encoding.</li>
+
+                </ul></p>
+            </div>
+            <div class="card">
+                <h3>HTTP/1.x vs HTTP/2: A Comparative Study</h3>
+                <p>HTTP2 Vs. HTTP1 is not a debate at all. HTTP2 is much faster and more reliable than HTTP1. HTTP1 loads a single request for every TCP connection, while HTTP2 avoids network delay by using multiplexing.
+
+                    HTTP is a network delay sensitive protocol in the sense that if there is less network delay, then the page loads faster. However, an impressive increase in network bandwidth only slightly improves page load time. This is key to understanding the differences in performance efficiencies between the different versions of HTTP. Back in the day when people used dial up modems web pages were simple and it was the actual data transfer between the server and the client that contributed towards the largest chunk of the page load time. Today the actual downloading of resources from server takes a negligible portion of the total page load time due to the tremendous increase in bandwidth availability. It is the time taken to establish the TCP connection and making requests that impacts performance. It was initially recommended to use only two connections per hostname but today most browsers use six connections per hostname. When we talk about http vs http2 in terms of performance it is important to note that a lot of performance optimizations adopted by HTTP/1.1 introduced complexities in terms of developmental efforts as well as network congestion that HTTP/2 attempts to address.</p>
+            </div>
+    </div>
+    
+</body>
+</html>
